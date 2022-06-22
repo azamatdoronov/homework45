@@ -8,7 +8,7 @@ STATUS_CHOICES = [('new', 'Новая'), ('in_progress', 'В процессе'),
 class Task(models.Model):
     description = models.CharField(max_length=250, null=False, blank=False, verbose_name="Описание")
     created_task = models.DateTimeField(auto_now_add=False, verbose_name="Дата создания")
-    dead_line = models.DateField(dateinput=['%Y-%m-%d'], verbose_name="Дата выполнения")
+    dead_line = models.DateField(auto_now=False, verbose_name="Дата выполнения")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0],
                               verbose_name="Статус")
 
