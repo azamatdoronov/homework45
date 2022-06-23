@@ -16,11 +16,15 @@
             {{ task.add_task|date:"Y-m-d" }}
         </p>
         <h3>
+            {{ task.created_task }}
+        </h3>
+        <h3>
             {{ task.dead_line }}
         </h3>
         <p>
-            {{ task.status }}
+            {{ task.get_status_display }}
         </p>
-<a href="/">Back to homepage</a>
+        <br>
+        <a href="/">Back to homepage</a>
 </body>
 </html>

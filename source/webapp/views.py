@@ -23,6 +23,8 @@ def add_task(request):
     else:
         description = request.POST.get("description")
         dead_line = request.POST.get("dead_line")
+        if dead_line == '':
+            dead_line = str(dead_line)
         status = request.POST.get("status")
         new_task = Task.objects.create(description=description, dead_line=dead_line, status=status)
         context = {"task": new_task}

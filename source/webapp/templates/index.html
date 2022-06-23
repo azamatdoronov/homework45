@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
-        <br>
-        <h3><a href="tasks/add/">Создать Задачи</a></h3>
-        <br>
-        <h1>Задачи</h1>
+        <h3><a href="tasks/add/">Add new task</a></h3>
+        <h1>Tasks:</h1>
         {% for task in tasks %}
-            <h3>{{ task.description }}</h3> <span>{{ task.status }} - {{ task.get_status_display }}</span>
+            <h3>{{ task.description }}</h3> <span>{{ task.get_status_display }}</span>
+            <br>
+            <br>
             <p><a href="task/?pk={{ task.pk }}">More information</a></p>
         {% endfor %}
 </body>

@@ -1,0 +1,32 @@
+[
+{
+    "model": "webapp.task",
+    "pk": 8,
+    "fields": {
+        "description": "╟рсЁрЄ№ ёюсръє",
+        "created_task": "2022-06-23T12:32:26.269Z",
+        "dead_line": "2022-02-12",
+        "status": "new"
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 9,
+    "fields": {
+        "description": "╬ЄфрЄ№ тх∙ш т їшьўшёЄъє",
+        "created_task": "2022-06-23T12:32:56.866Z",
+        "dead_line": "2021-12-15",
+        "status": "new"
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 10,
+    "fields": {
+        "description": "╟ряшёрЄ№ё  эр ъєЁё√",
+        "created_task": "2022-06-23T12:33:13.390Z",
+        "dead_line": "2022-01-23",
+        "status": "done"
+    }
+}
+]
