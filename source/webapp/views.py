@@ -10,9 +10,10 @@ def index_view(request):
     context = {"tasks": tasks}
     return render(request, "index.html", context)
 
-def create_task(request):
+
+def add_task(request):
     if request.method == "GET":
-        return render(request, "create_task.html", {"statuses": STATUS_CHOICES})
+        return render(request, "add_task.html", {"statuses": STATUS_CHOICES})
     else:
         description = request.POST.get("description")
         dead_line = request.POST.get("dead_line")

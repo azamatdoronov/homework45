@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+
+<h1>Add Task</h1>
+
+<form action="/tasks/add/" method="post">
+    {% csrf_token %}
+    <label>Status:</label><br/>
+    <select name="status">
+        {% for value, status in statuses %}
+            <option value="{{ value }}">{{ status }}</option>
+        {% endfor %}
+    </select><br/>
+    <label>Description:</label><br/>
+    <input type="text" name="description"/><br/>
+    <label>Text:</label><br/>
+    <textarea name="content"></textarea><br/>
+    <label>Deadline:</label><br/>
+    <input type="date" name="dead_line"/><br/>
+    <br/>
+    <input type="submit" value="Send"/>
+</form>
+<p><a href="/">Back to homepage</a></p>
+</body>
+</html>
