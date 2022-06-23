@@ -17,7 +17,7 @@
         <h1>Задачи</h1>
         {% for task in tasks %}
             <h3>{{ task.description }}</h3> <span>{{ task.status }} - {{ task.get_status_display }}</span>
-            <p><a href="task/?pk={{ task.pk }}">Подробнее</a></p>
+            <p><a href="task/?pk={{ task.pk }}">More information</a></p>
         {% endfor %}
 </body>
 </html>

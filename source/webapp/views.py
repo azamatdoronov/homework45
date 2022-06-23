@@ -11,6 +11,12 @@ def index_view(request):
     return render(request, "index.html", context)
 
 
+def task_view(request):
+    pk = request.GET.get("pk")
+    task = Task.objects.get(pk=pk)
+    return render(request, "task_view.html", {"task": task})
+
+
 def add_task(request):
     if request.method == "GET":
         return render(request, "add_task.html", {"statuses": STATUS_CHOICES})
@@ -20,4 +26,4 @@ def add_task(request):
         status = request.POST.get("status")
         new_task = Task.objects.create(description=description, dead_line=dead_line, status=status)
         context = {"task": new_task}
-        return render(request, "article_view.html", context)
+        return render(request, 'task_view.html', context)
