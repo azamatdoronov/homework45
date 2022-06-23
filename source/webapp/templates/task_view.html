@@ -12,19 +12,15 @@
         <h1 style="display: inline-block">
             {{ task.description }}
         </h1>
-        <p style="display: inline-block">
-            {{ task.add_task|date:"Y-m-d" }}
-        </p>
         <h3>
-            {{ task.created_task }}
+            Date of add task: {{ task.created_task }}
         </h3>
         <h3>
-            {{ task.dead_line }}
+            Deadline: {{ task.dead_line }}
         </h3>
-        <p>
-            {{ task.get_status_display }}
-        </p>
-        <br>
+        <h3>
+            Status: {{ task.get_status_display }}
+        </h3>
         <a href="/">Back to homepage</a>
 </body>
 </html>

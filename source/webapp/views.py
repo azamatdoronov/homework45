@@ -22,10 +22,14 @@ def add_task(request):
         return render(request, "add_task.html", {"statuses": STATUS_CHOICES})
     else:
         description = request.POST.get("description")
+        status = request.POST.get("status")
         dead_line = request.POST.get("dead_line")
         if dead_line == '':
-            dead_line = str(dead_line)
-        status = request.POST.get("status")
-        new_task = Task.objects.create(description=description, dead_line=dead_line, status=status)
-        context = {"task": new_task}
-        return render(request, 'task_view.html', context)
+            dead_line = None
+            new_task = Task.objects.create(description=description, dead_line=dead_line, status=status)
+            context = {"task": new_task}
+            return render(request, 'task_view.html', context)
+        else:
+            new_task = Task.objects.create(description=description, dead_line=dead_line, status=status)
+            context = {"task": new_task}
+            return render(request, 'task_view.html', context)
