@@ -10,7 +10,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ['id', 'description', 'created_task', 'dead_line', 'status']
     list_display_links = ['id', 'description']
     list_filter = ['status']
-    search_fields = ['description', 'dead_line']
+    search_fields = ['status', 'dead_line']
     fields = ['description', 'created_task', 'dead_line', 'status']
     readonly_fields = ['description', 'created_task']
 
