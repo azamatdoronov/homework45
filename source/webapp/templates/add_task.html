@@ -11,15 +11,21 @@
 <form action="/tasks/add/" method="post">
     {% csrf_token %}
     <label>Status:</label><br/>
-    <select name="status">
-        {% for value, status in statuses %}
-            <option value="{{ value }}">{{ status }}</option>
-        {% endfor %}
-    </select><br/>
+    <label>
+        <select name="status">
+            {% for value, status in statuses %}
+                <option value="{{ value }}">{{ status }}</option>
+            {% endfor %}
+        </select>
+    </label><br/>
     <label>Description:</label><br/>
-    <input type="text" name="description"/><br/>
+    <label>
+        <input type="text" name="description"/>
+    </label><br/>
     <label>Deadline:</label><br/>
-    <input type="date" name="dead_line"/><br/>
+    <label>
+        <input type="date" name="dead_line"/>
+    </label><br/>
     <br/>
     <input type="submit" value="Send"/>
 </form>
