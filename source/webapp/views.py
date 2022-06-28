@@ -10,12 +10,6 @@ def index_view(request):
     return render(request, "index.html", context)
 
 
-def sketchpad_view(request, **kwargs):
-    pk = kwargs.get("pk")
-    sketchpad = get_object_or_404(Sketchpad, pk=pk)
-    return render(request, "sketchpad_view.html", {"sketchpad": sketchpad})
-
-
 def create_sketchpad(request):
     if request.method == "GET":
         return render(request, "create.html", {"statuses": STATUS_CHOICES})
@@ -27,11 +21,13 @@ def create_sketchpad(request):
         if date_of_completion == '':
             date_of_completion = None
             new_sketchpad = Sketchpad.objects.create(title=title, description=description, status=status, date_of_completion=date_of_completion)
-            # context = {"sketchpad": new_sketchpad}
-            # return render(request, "sketchpad_view.html", context)
             return redirect("sketchpad_view", pk=new_sketchpad.pk)
         else:
             new_sketchpad = Sketchpad.objects.create(title=title, description=description, status=status,date_of_completion=date_of_completion)
-            # context = {"sketchpad": new_sketchpad}
-            # return render(request, "sketchpad_view.html", context)
             return redirect("sketchpad_view", pk=new_sketchpad.pk)
+
+
+def sketchpad_view(request, **kwargs):
+    pk = kwargs.get("pk")
+    sketchpad = get_object_or_404(Sketchpad, pk=pk)
+    return render(request, "sketchpad_view.html", {"sketchpad": sketchpad})
