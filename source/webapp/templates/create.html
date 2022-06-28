@@ -2,8 +2,9 @@
 {% block title %}Create Sketchpad{% endblock %}
 
 {% block content%}
+        <h2> *************************************** </h2>
 <h1>Add note</h1>
-
+    <h2> *************************************** </h2>
 <form action="" method="post">
     {% csrf_token %}
     <label>Create:</label><br/>
@@ -21,5 +22,7 @@
     <input type="date" id="date_of_completion" name="date_of_completion"><br/>
     <input type="submit" value="Send"/><br/>
 </form>
-<br/><a href="{% url "index" %}">BACK TO HOMEPAGE</a>
+    <br>
+        <h2> *************************************** </h2>
+<a href="{% url "index" %}">BACK TO HOMEPAGE</a>
 {% endblock %}
