@@ -1,23 +1,25 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
-</head>
-<body>
-        <h3><a href="tasks/add/">Add new task</a></h3>
-        <h1>Tasks:</h1>
-        {% for task in tasks %}
-            <h3>{{ task.description }}</h3> <span>{{ task.get_status_display }}</span>
-            <br>
-            <br>
-            <p><a href="task/?pk={{ task.pk }}">More information</a></p>
-        {% endfor %}
-</body>
-</html>
+
+{% block content %}
+
+<a href="{% url "create_sketchpad" %}">Создать задачу</a>
+<h1>Список задач</h1>
+
+{% for sketchpad in sketchpads %}
+    <h2>TITLE: {{ sketchpad.title }}</h2>
+    <h3> DESCRIPTION: {{ sketchpad.description }}</h3>
+    <p>STATUS: {{ sketchpad.get_status_display }} </p>
+    <p>DATE OF COMPLETION:
+    {% if sketchpad.date_of_completion == None %}
+         {{ "" }}
+    {% else %}
+        {{ sketchpad.date_of_completion }}
+    {% endif %}
+    </p>
+    <p><a href="{% url "sketchpad_view" sketchpad.pk %}">Подробнее</a></p>
+    <h2> ================================= </h2>
+{% endfor %}
+
+{% endblock %}
+

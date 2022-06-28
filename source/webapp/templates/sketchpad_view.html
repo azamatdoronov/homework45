@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Sketch view {% endblock %}
+
+{% block content %}
+    <p>
+        TITLE: {{ sketchpad.title }}
+    </p>
+
+    <p>
+        DESCRIPTION: {{ sketchpad.description }}
+    </p>
+    <p>
+        STATUS: {{ sketchpad.status }}
+    </p>
+
+    <p>
+        DATE OF COMPLETION:
+        {% if sketchpad.date_of_completion == None %}
+            {{ "" }}
+        {% else %}
+            {{ sketchpad.date_of_completion }}
+        {% endif %}
+    </p>
+
+    <a href="{% url "index" %}">На главную</a>
+
+{% endblock %}

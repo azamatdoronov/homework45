@@ -1,37 +1,37 @@
 from django.shortcuts import render, redirect, get_object_or_404
-# Create your views here.
 
-from webapp.models import Task, STATUS_CHOICES
+# Create your views here.
+from webapp.models import Sketchpad, STATUS_CHOICES
 
 
 def index_view(request):
-    tasks = Task.objects.order_by("-created_task")
-    context = {"tasks": tasks}
+    sketchpads = Sketchpad.objects.order_by("date_of_completion")
+    context = {"sketchpads": sketchpads}
     return render(request, "index.html", context)
 
 
-def task_view(request, **kwargs):
+def sketchpad_view(request, **kwargs):
     pk = kwargs.get("pk")
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, "task_view.html", {"task": task})
+    sketchpad = get_object_or_404(Sketchpad, pk=pk)
+    return render(request, "sketchpad_view.html", {"sketchpad": sketchpad})
 
 
-def add_task(request):
+def create_sketchpad(request):
     if request.method == "GET":
-        return render(request, "add_task.html", {"statuses": STATUS_CHOICES})
+        return render(request, "create.html", {"statuses": STATUS_CHOICES})
     else:
         title = request.POST.get("title")
         description = request.POST.get("description")
         status = request.POST.get("status")
-        dead_line = request.POST.get("dead_line")
-        if dead_line == '':
-            dead_line = None
-            new_task = Task.objects.create(title=title, description=description, dead_line=dead_line, status=status)
-            # context = {"task": new_task}
-            # return render(request, "task_view.html", context)
-            return redirect("task_view.html", pk=new_task.pk)
+        date_of_completion = request.POST.get("date_of_completion")
+        if date_of_completion == '':
+            date_of_completion = None
+            new_sketchpad = Sketchpad.objects.create(title=title, description=description, status=status, date_of_completion=date_of_completion)
+            # context = {"sketchpad": new_sketchpad}
+            # return render(request, "sketchpad_view.html", context)
+            return redirect("sketchpad_view", pk=new_sketchpad.pk)
         else:
-            new_task = Task.objects.create(title=title, description=description, dead_line=dead_line, status=status)
-            # context = {"task": new_task}
-            # return render(request, "task_view.html", context)
-            return redirect("task_view.html", pk=new_task.pk)
+            new_sketchpad = Sketchpad.objects.create(title=title, description=description, status=status,date_of_completion=date_of_completion)
+            # context = {"sketchpad": new_sketchpad}
+            # return render(request, "sketchpad_view.html", context)
+            return redirect("sketchpad_view", pk=new_sketchpad.pk)
