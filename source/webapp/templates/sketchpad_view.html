@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block title %} Sketch view {% endblock %}
+{% block title %} NOTE VIEW {% endblock %}
 
 {% block content %}
     <p>
-        TITLE: {{ sketchpad.title }}
+        <i>Title:</i> {{ sketchpad.title }}
     </p>
 
     <p>
-        DESCRIPTION: {{ sketchpad.description }}
+        <i>Description:</i> {{ sketchpad.description }}
     </p>
     <p>
-        STATUS: {{ sketchpad.status }}
+        <i>Status:</i> {{ sketchpad.status }}
     </p>
 
     <p>
-        DATE OF COMPLETION:
+        <i>Deadline:</i>
         {% if sketchpad.date_of_completion == None %}
             {{ "" }}
         {% else %}
@@ -22,6 +22,6 @@
         {% endif %}
     </p>
 
-    <a href="{% url "index" %}">На главную</a>
+    <a href="{% url "index" %}">BACK TO HOMEPAGE</a>
 
 {% endblock %}

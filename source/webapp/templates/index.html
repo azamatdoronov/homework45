@@ -2,23 +2,24 @@
 
 
 {% block content %}
-
-<a href="{% url "create_sketchpad" %}">Создать задачу</a>
-<h1>Список задач</h1>
-
+        <h2> *************************************** </h2>
+<a href="{% url "create_sketchpad" %}">ADD NOTE</a>
+        <h2> *************************************** </h2>
+ <font size="6" color="red" face="serif"><h1>TODO LIST:</h1></font>
+    <h2> *************************************** </h2>
 {% for sketchpad in sketchpads %}
-    <h2>Title: {{ sketchpad.title }}</h2>
-    <h3> Description: {{ sketchpad.description }}</h3>
-    <p>Status: {{ sketchpad.get_status_display }} </p>
-    <p>Deadline:
+    <p><i>Title:</i> {{ sketchpad.title }}</p>
+    <p><i>Description:</i> {{ sketchpad.description }}</p>
+    <p><i>Status:</i> {{ sketchpad.get_status_display }} </p>
+    <p><i>Deadline:</i>
     {% if sketchpad.date_of_completion == None %}
          {{ "" }}
     {% else %}
         {{ sketchpad.date_of_completion }}
     {% endif %}
     </p>
-    <p><a href="{% url "sketchpad_view" sketchpad.pk %}">Подробнее</a></p>
-    <h2> ================================= </h2>
+    <p><a href="{% url "sketchpad_view" sketchpad.pk %}">MORE INFORMATION</a></p>
+    <h2> *************************************** </h2>
 {% endfor %}
 
 {% endblock %}
