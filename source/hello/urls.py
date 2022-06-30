@@ -22,5 +22,5 @@ urlpatterns = [
     path('sketch/<int:pk>/', sketchpad_view, name="sketchpad_view"),
     path('sketch/add/', create_sketchpad, name="create_sketchpad"),
     path('sketch/<int:pk>/update', update_sketchpad, name="update_sketchpad"),
-    path('sketch/<int:pk>/delete', delete_sketchpad, name="delete_sketchpad"),
+    path('article/<int:pk>/delete', delete_sketchpad, name="delete_sketchpad"),
 ]
