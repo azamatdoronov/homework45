@@ -1,27 +1,28 @@
 {% extends "base.html" %}
+
 {% block title %}Create Sketchpad{% endblock %}
 
-{% block content%}
-<h1>Add Note</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    <label>Create:</label><br/>
-    <select name="status">
-        {% for value, status in statuses %}
-            <option value="{{ value }}">{{ status }}</option>
-        {% endfor %}
-    </select>
-    <br/>
-    <label>Title:</label><br/>
-    <input type="text" name="title"/><br/>
-    <label>Description:</label><br/>
-    <input type="text" name="description"/><br/>
-    <label for="date_of_completion">Date of completion:</label><br/>
-    <input type="date" id="date_of_completion" name="date_of_completion">
-    <br/>
-    <br/>
-    <input type="submit" value="Send"/><br/>
-</form>
+{% block content %}
+    <h1>Add Note</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Create:</label><br/>
+        <select name="status">
+            {% for value, status in statuses %}
+                <option value="{{ value }}">{{ status }}</option>
+            {% endfor %}
+        </select>
+        <br/>
+        <label>Title:</label><br/>
+        <input type="text" name="title"/><br/>
+        <label>Description:</label><br/>
+        <input type="text" name="description"/><br/>
+        <label for="date_of_completion">Date of completion:</label><br/>
+        <input type="date" id="date_of_completion" name="date_of_completion">
+        <br/>
+        <br/>
+        <input type="submit" value="Send"/><br/>
+    </form>
     <br>
-<a href="{% url "index" %}">BACK TO HOMEPAGE</a>
+    <a href="{% url "index" %}">BACK TO HOMEPAGE</a>
 {% endblock %}

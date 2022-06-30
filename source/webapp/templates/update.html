@@ -1,8 +1,21 @@
 {% extends "base.html" %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "create_sketchpad" %}">Add Note</a>
+    </li>
+    <li class="nav-item">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sketchpadDeleteModal">
+            Delete
+        </button>
+    </li>
+{% endblock %}
+
 {% block title %}Sketchpad Change{% endblock %}
 
 {% block content %}
-    <font color="red"><h2>Update Note:</h2></font>
+    <br>
+    <h1>Update Note:</h1>
     <form action="" method="post">
         {% csrf_token %}
         <label>Status:</label><br/>
@@ -24,4 +37,26 @@
     </form>
     <br/>
     <a href="{% url "index" %}">BACK TO HOMEPAGE</a>
+
+    <div class="modal fade" id="sketchpadDeleteModal" tabindex="-1" aria-labelledby="sketchpadModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sketchpadDeleteModal">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are sure delete this note - "{{ sketchpad.title }}"?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{% url "delete_sketchpad" sketchpad.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
