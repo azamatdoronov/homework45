@@ -3,27 +3,32 @@
 {% block title %} NOTE VIEW {% endblock %}
 
 {% block content %}
-        <h2> *************************************** </h2>
+    <h1> NOTE VIEW </h1>
     <p>
-        <i>Title:</i> {{ sketchpad.title }}
+        <b><i>Title:</i></b> {{ sketchpad.title }}
     </p>
 
     <p>
-        <i>Description:</i> {{ sketchpad.description }}
+        <b><i>Description:</i></b> {{ sketchpad.description }}
     </p>
     <p>
-        <i>Status:</i> {{ sketchpad.status }}
+        <b><i>Status:</i></b> {{ sketchpad.status }}
     </p>
 
     <p>
-        <i>Deadline:</i>
+        <b><i>Deadline:</i></b>
         {% if sketchpad.date_of_completion == None %}
             {{ "" }}
         {% else %}
             {{ sketchpad.date_of_completion }}
         {% endif %}
     </p>
-    <h2> *************************************** </h2>
+    <br/>
+    <a href="{% url "update_sketchpad" sketchpad.pk %}">UPDATE NOTE</a>
+    <h5> *</h5>
+    <a href="{% url "delete_sketchpad" sketchpad.pk %}">DELETE NOTE</a>
+    <h5> *</h5>
     <a href="{% url "index" %}">BACK TO HOMEPAGE</a>
+
 
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Sketchpad Change{% endblock %}
+
+{% block content %}
+    <font color="red"><h2>Update Note:</h2></font>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Status:</label><br/>
+        <select name="status">
+            {% for value, status in statuses %}
+                <option value="{{ value }}">{{ status }}</option>
+            {% endfor %}
+        </select>
+        <br/>
+        <label>Title:</label><br/>
+        <input type="text" name="title" value="{{ sketchpad.title }}"/><br/>
+        <label>Description:</label><br/>
+        <input type="text" name="description" value="{{ sketchpad.description }}"/><br/>
+        <label for="date_of_completion">Deadline:</label><br/>
+        <input type="date" id="date_of_completion" name="date_of_completion" value="{{ sketchpad.date_of_completion }}">
+        <br/>
+        <br/>
+        <input type="submit" value="Change"/><br/>
+    </form>
+    <br/>
+    <a href="{% url "index" %}">BACK TO HOMEPAGE</a>
+{% endblock %}

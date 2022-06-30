@@ -1,26 +1,24 @@
 {% extends "base.html" %}
-
-
-{% block content %}
-        <h2> *************************************** </h2>
-<a href="{% url "create_sketchpad" %}">ADD NOTE</a>
-        <h2> *************************************** </h2>
- <font size="6" color="red" face="serif"><h1>TODO LIST:</h1></font>
-    <h2> *************************************** </h2>
-{% for sketchpad in sketchpads %}
-    <p><i>Title:</i> {{ sketchpad.title }}</p>
-    <p><i>Description:</i> {{ sketchpad.description }}</p>
-    <p><i>Status:</i> {{ sketchpad.get_status_display }} </p>
-    <p><i>Deadline:</i>
-    {% if sketchpad.date_of_completion == None %}
-         {{ "" }}
-    {% else %}
-        {{ sketchpad.date_of_completion }}
-    {% endif %}
-    </p>
-    <p><a href="{% url "sketchpad_view" sketchpad.pk %}">MORE INFORMATION</a></p>
-    <h2> *************************************** </h2>
-{% endfor %}
-
+{% load static %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "create_sketchpad" %}">Add Note</a>
+    </li>
 {% endblock %}
+{% block content %}
+    <h1>TODO LIST</h1>
+    <div class="row">
+        {% for sketchpad in sketchpads %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ sketchpad.title }}</h5>
+                        <a href="{% url "sketchpad_view" sketchpad.pk %}" class="card-link">MORE INFORMATION</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
 
