@@ -38,12 +38,18 @@ def sketchpad_view(request, **kwargs):
 def update_sketchpad(request, pk):
     sketchpad = get_object_or_404(Sketchpad, pk=pk)
     if request.method == "GET":
-        return render(request, "update.html", {"sketchpad": sketchpad})
+        context = {
+            "statuses": STATUS_CHOICES,
+            "sketchpad": sketchpad
+        }
+        return render(request, "update.html", context)
     else:
         sketchpad.title = request.POST.get("title")
         sketchpad.description = request.POST.get("description")
         sketchpad.status = request.POST.get("status")
         sketchpad.date_of_completion = request.POST.get("date_of_completion")
+        if not sketchpad.date_of_completion:
+            sketchpad.date_of_completion = None
         sketchpad.save()
         return redirect("sketchpad_view", pk=sketchpad.pk)
 
