@@ -48,8 +48,6 @@ def update_sketchpad(request, pk):
         sketchpad.description = request.POST.get("description")
         sketchpad.status = request.POST.get("status")
         sketchpad.date_of_completion = request.POST.get("date_of_completion")
-        if not sketchpad.date_of_completion:
-            sketchpad.date_of_completion = None
         sketchpad.save()
         return redirect("sketchpad_view", pk=sketchpad.pk)
 
@@ -57,7 +55,8 @@ def update_sketchpad(request, pk):
 def delete_sketchpad(request, pk):
     sketchpad = get_object_or_404(Sketchpad, pk=pk)
     if request.method == "GET":
-        return render(request, "delete.html", {"sketchpad": sketchpad})
+        pass
+        # return render(request, "delete.html", {"sketchpad": sketchpad})
     else:
         sketchpad.delete()
         return redirect("index")
